@@ -39,62 +39,62 @@ function App() {
     const length = Mystate.charAt(Mystate.length - 1)
     let numstring = Mystate;
     console.log(numstring.toString(), "string")
-    
+
     if (key.keyCode == "48") {
-        setMystate(Mystate+ 0);
+      setMystate(numstring + 0);
     }
     if (key.keyCode == "49") {
-      setMystate(Mystate+ 1);
+      setMystate(numstring + 1);
     }
     if (key.keyCode == "50") {
-      setMystate(Mystate+ 2);
+      setMystate(numstring + 2);
     }
     if (key.keyCode == "51") {
-      setMystate(Mystate+ 3);
+      setMystate(numstring + 3);
     }
     if (key.keyCode == "52") {
-      setMystate(Mystate+ 4);
+      setMystate(numstring + 4);
     }
     if (key.keyCode == "53") {
-      setMystate(Mystate+ 5);
+      setMystate(numstring + 5);
     }
     if (key.keyCode == "54") {
-      setMystate(Mystate+ 6);
+      setMystate(numstring + 6);
     }
     if (key.keyCode == "55") {
-      setMystate(Mystate+ 7);
+      setMystate(numstring + 7);
     }
     if (key.keyCode == "56") {
-      setMystate(Mystate+ 8);
+      setMystate(numstring + 8);
     }
     if (key.keyCode == "57") {
-      setMystate(Mystate+ 9);
+      setMystate(numstring + 9);
     }
     if (key.keyCode == "43") {
       if ((length != "+" && length != "-" && length != "/" && length != "*")) {
-        setMystate(Mystate+ "+");
+        setMystate(numstring + "+");
       }
     }
     if (key.keyCode == "45") {
       if ((length != "+" && length != "-" && length != "/" && length != "*")) {
-        setMystate(Mystate+ "-");
+        setMystate(numstring + "-");
       }
     }
     if (key.keyCode == "42") {
       if ((length != "+" && length != "-" && length != "/" && length != "*")) {
-        setMystate(Mystate+ "*");
+        setMystate(numstring + "*");
       }
     }
     if (key.keyCode == "47") {
       if ((length != "+" && length != "-" && length != "/" && length != "*")) {
-        setMystate(Mystate+ "/");
+        setMystate(numstring + "/");
       }
     }
     if (key.keyCode == "13") {
       Result();
     }
-    if (key.keyCode == "08") {
-      Clear();
+    if (key.keyCode == "32") {
+        Clear();
     }
   });
   return (
