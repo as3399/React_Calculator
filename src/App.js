@@ -1,23 +1,130 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState } from "react"
+import "./App.css"
+import $ from "jquery"
 
 function App() {
+  const [Mystate, setMystate] = useState("");
+
+  const InputDigits = (e) => {
+    if (Mystate.length <= 12) {
+      const length = Mystate.charAt(Mystate.length - 1)
+      const mystate = Mystate;
+      console.log(length, "char");
+      if ((length == "+" || length == "-" || length == "/" || length == "*") && (e.target.name == "+" || e.target.name == "-" || e.target.name == "/" || e.target.name == "*")) {
+        setMystate(Mystate)
+      }
+      else if ((mystate == "") && (e.target.name == "+" || e.target.name == "/" || e.target.name == "*")) {
+        setMystate(Mystate)
+      }
+      else (setMystate(Mystate + e.target.name))
+    }
+  }
+  const Clear = () => {
+    setMystate("");
+  }
+
+  const Result = () => {
+    const mystate = Mystate;
+    const length = Mystate.charAt(Mystate.length - 1)
+    console.log(length);
+    if (mystate != "") {
+      if (length != "+" && length != "-" && length != "/" && length != "*") {
+        let ans = eval(Mystate)
+        setMystate(ans.toString());
+      }
+      console.log(Mystate, "state")
+    }
+  }
+  $(document).keypress(function (key) {
+    const length = Mystate.charAt(Mystate.length - 1)
+    let numstring = Mystate;
+    console.log(numstring.toString(), "string")
+    
+    if (key.keyCode == "48") {
+        setMystate(Mystate+ 0);
+    }
+    if (key.keyCode == "49") {
+      setMystate(Mystate+ 1);
+    }
+    if (key.keyCode == "50") {
+      setMystate(Mystate+ 2);
+    }
+    if (key.keyCode == "51") {
+      setMystate(Mystate+ 3);
+    }
+    if (key.keyCode == "52") {
+      setMystate(Mystate+ 4);
+    }
+    if (key.keyCode == "53") {
+      setMystate(Mystate+ 5);
+    }
+    if (key.keyCode == "54") {
+      setMystate(Mystate+ 6);
+    }
+    if (key.keyCode == "55") {
+      setMystate(Mystate+ 7);
+    }
+    if (key.keyCode == "56") {
+      setMystate(Mystate+ 8);
+    }
+    if (key.keyCode == "57") {
+      setMystate(Mystate+ 9);
+    }
+    if (key.keyCode == "43") {
+      if ((length != "+" && length != "-" && length != "/" && length != "*")) {
+        setMystate(Mystate+ "+");
+      }
+    }
+    if (key.keyCode == "45") {
+      if ((length != "+" && length != "-" && length != "/" && length != "*")) {
+        setMystate(Mystate+ "-");
+      }
+    }
+    if (key.keyCode == "42") {
+      if ((length != "+" && length != "-" && length != "/" && length != "*")) {
+        setMystate(Mystate+ "*");
+      }
+    }
+    if (key.keyCode == "47") {
+      if ((length != "+" && length != "-" && length != "/" && length != "*")) {
+        setMystate(Mystate+ "/");
+      }
+    }
+    if (key.keyCode == "13") {
+      Result();
+    }
+    if (key.keyCode == "08") {
+      Clear();
+    }
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row text-right row1">
+        <div className="col-12">{Mystate}</div>
+      </div>
+      <div className="row text-center">
+        <input className="keys1 col-6" type="button" onClick={Clear} value="clear" />
+        <input className="col-3 keys2" type="button" onClick={Result} name="=" value="=" />
+        <input className="col-3 keys2" type="button" onClick={InputDigits} name="+" value="+" />
+      </div>
+      <div className="row text-center">
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="7" value="7" />
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="8" value="8" />
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="9" value="9" />
+        <input className="col-3 keys2" type="button" onClick={InputDigits} name="-" value="-" />
+      </div>
+      <div className="row text-center">
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="6" value="6" />
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="5" value="5" />
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="4" value="4" />
+        <input className="col-3 keys2" type="button" onClick={InputDigits} name="*" value="*" />
+      </div>
+      <div className="row text-center">
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="3" value="3" />
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="2" value="2" />
+        <input className=" keys1 col-3" type="button" onClick={InputDigits} name="1" value="1" />
+        <input className="col-3 keys2" type="button" onClick={InputDigits} name="/" value="÷" />
+      </div>
     </div>
   );
 }
